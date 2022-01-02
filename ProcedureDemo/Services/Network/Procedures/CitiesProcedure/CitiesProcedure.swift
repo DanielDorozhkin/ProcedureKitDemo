@@ -10,8 +10,9 @@ import Alamofire
 import ProcedureKit
 
 class CityProcedure: Procedure, InputProcedure, OutputProcedure {
-    var input: Pending<[State]> = .pending
-    var output: Pending<ProcedureResult<[State]>> = .pending
+    var input  : Pending<[State]>                  = .pending
+    var output : Pending<ProcedureResult<[State]>> = .pending
+    private let network                            = NetworkService.shared
     
     override func execute() {
         getAllCities { states in
@@ -22,7 +23,7 @@ class CityProcedure: Procedure, InputProcedure, OutputProcedure {
     
     private func getAllCities(_ compilation: @escaping ([State]) -> Void) {
         guard let states = input.value else { return }
-        var buffer : [State] = []
+        var buffer = [State]()
         
         states.forEach {
             getCitiesOfState($0) { state in
@@ -36,7 +37,7 @@ class CityProcedure: Procedure, InputProcedure, OutputProcedure {
     }
     
     private func getCitiesOfState(_ state: State, _ compilation: @escaping (State) -> Void) {
-        guard let headers = getHeaders() else { return }
+        guard let headers = network.getHeaders() else { return }
         let url = "https://www.universal-tutorial.com/api/cities/\(state.name)"
         
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil, requestModifier: nil).response { [weak self] data in
@@ -48,7 +49,7 @@ class CityProcedure: Procedure, InputProcedure, OutputProcedure {
             
             do {
                 let cityModels = try JSONDecoder().decode([CityModelResponse].self, from: data)
-                let cities = self.getCityObjects(cityModels)
+                let cities     = self.getCityObjects(cityModels)
                 
                 state.injectCities(cities)
                 compilation(state)
@@ -56,16 +57,6 @@ class CityProcedure: Procedure, InputProcedure, OutputProcedure {
                 compilation(state)
             }
         }
-    }
-    
-    private func getHeaders() -> HTTPHeaders? {
-        guard let token = NetworkService.shared.authToken else { return nil }
-        let headers : HTTPHeaders = [
-            "Accept": "application/json",
-            "Authorization": token
-        ]
-        
-        return headers
     }
     
     private func getCityObjects(_ models: [CityModelResponse]) -> [City] {

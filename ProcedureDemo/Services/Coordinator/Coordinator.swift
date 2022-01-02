@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 class Coordinator {
-    private let navigationController : UINavigationController
-    private let network              = NetworkService.shared
+    let navigationController : UINavigationController
+    private let network      = NetworkService.shared
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -21,7 +21,8 @@ class Coordinator {
         let countryVC        = CountriesViewController(countryViewModel)
         countryViewModel.countryDelegate = countryVC
         
-        navigationController.pushViewController(countryVC, animated: true)
+        applyTransitionAnimation()
+        navigationController.pushViewController(countryVC, animated: false)
     }
     
     func pushCitiesScreen(_ country: Country) {
@@ -29,10 +30,19 @@ class Coordinator {
         let citiesVC        = CitiesViewController(citiesViewModel)
         citiesViewModel.citiesDelegate = citiesVC
         
-        navigationController.pushViewController(citiesVC, animated: true)
+        applyTransitionAnimation()
+        navigationController.pushViewController(citiesVC, animated: false)
     }
     
     func pop() {
-        navigationController.popViewController(animated: true)
+        navigationController.popViewController(animated: false)
+    }
+    
+    private func applyTransitionAnimation() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
+        navigationController.view.layer.add(transition, forKey: nil)
     }
 }

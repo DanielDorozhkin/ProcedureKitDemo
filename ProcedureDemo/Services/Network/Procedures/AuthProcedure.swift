@@ -15,6 +15,7 @@ class AuthProcedure: Procedure, OutputProcedure {
     override func execute() {
         getToken { token in
             if let token = token {
+                NetworkService.shared.authToken = token
                 self.output = .ready(.success(token))
             } else {
                 self.cancel()
@@ -25,7 +26,7 @@ class AuthProcedure: Procedure, OutputProcedure {
     }
     
     private func getToken(_ compilation: @escaping (String?) -> Void) {
-        let url = "https://www.universal-tutorial.com/api/getaccesstoken"
+        let url     = "https://www.universal-tutorial.com/api/getaccesstoken"
         let headers = getAuthHeaders()
         
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil, requestModifier: nil).response { data in
@@ -36,9 +37,8 @@ class AuthProcedure: Procedure, OutputProcedure {
             
             do {
                 let decoder = JSONDecoder()
-                let auth = try decoder.decode(AuthResponse.self, from: data)
-                
-                let token = "Rk6_2E0MRdzZwq3BiOPGhnX_wHmDO1mXMm971uGQEDmpwhuFqW7z0zJ-zi0efAVsUZU \(auth.key)"
+                let auth    = try decoder.decode(AuthResponse.self, from: data)
+                let token   = "Rk6_2E0MRdzZwq3BiOPGhnX_wHmDO1mXMm971uGQEDmpwhuFqW7z0zJ-zi0efAVsUZU \(auth.key)"
                 
                 compilation(token)
             } catch {
@@ -49,11 +49,11 @@ class AuthProcedure: Procedure, OutputProcedure {
     
     private func getAuthHeaders() -> HTTPHeaders {
         let token = "Rk6_2E0MRdzZwq3BiOPGhnX_wHmDO1mXMm971uGQEDmpwhuFqW7z0zJ-zi0efAVsUZU"
-        let mail = "danield@gini-apps.com"
+        let mail  = "danield@gini-apps.com"
         
         let headers : HTTPHeaders = [
-            "Accept": "application/json",
-            "api-token": token,
+            "Accept" : "application/json",
+            "api-token" : token,
             "user-email": mail
         ]
         

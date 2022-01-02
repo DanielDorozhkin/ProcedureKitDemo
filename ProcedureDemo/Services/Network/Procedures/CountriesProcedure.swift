@@ -10,11 +10,11 @@ import Alamofire
 import ProcedureKit
 
 class CountriesGroupProcedure: GroupProcedure, InputProcedure, OutputProcedure {
-    var input: Pending<String> = .pending
+    var input : Pending<String>                     = .pending
     var output: Pending<ProcedureResult<[Country]>> = .pending
     
     init() {
-        let authProcedure = AuthProcedure()
+        let authProcedure      = AuthProcedure()
         let countriesProcedure = CountriesProcedure().injectResult(from: authProcedure)
         
         super.init(operations: [authProcedure, countriesProcedure])
@@ -24,16 +24,10 @@ class CountriesGroupProcedure: GroupProcedure, InputProcedure, OutputProcedure {
 }
 
 class CountriesProcedure: Procedure, InputProcedure, OutputProcedure {
-    var input: Pending<String> = .pending
+    var input : Pending<String>                     = .pending
     var output: Pending<ProcedureResult<[Country]>> = .pending
     
     override func execute() {
-        guard let token = input.value else {
-            self.finish()
-            return
-        }
-        
-        NetworkService.shared.authToken = token
         getCountries { countries in
             if let countries = countries {
                 self.output = .ready(.success(countries))

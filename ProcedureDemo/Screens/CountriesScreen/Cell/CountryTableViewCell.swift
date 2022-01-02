@@ -11,8 +11,8 @@ import Reusable
 class CountryTableViewCell: UITableViewCell, NibReusable {
     
     //MARK: -Outlets
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var codeLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var codeLabel: UILabel!
     
     func configure(_ country: Country) {
         nameLabel.text = country.name

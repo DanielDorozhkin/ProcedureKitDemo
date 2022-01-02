@@ -11,6 +11,7 @@ import Foundation
 protocol ScreenStateProtocol: AnyObject {
     func sourceState()
     func errorState()
+    func isLoadingStateAppearing(_ appear: Bool)
 }
 
 protocol TableViewProtocol {
@@ -31,6 +32,9 @@ class CountryViewModel {
     }
     
     func getCountries() {
+        countryDelegate?.isLoadingStateAppearing(true)
+        updateNavigationTitle()
+        
         network.getCountries { [weak self] countries in
             guard let self = self else { return }
             if let countries = countries {
@@ -39,7 +43,14 @@ class CountryViewModel {
             } else {
                 self.countryDelegate?.errorState()
             }
+            
+            self.countryDelegate?.isLoadingStateAppearing(false)
         }
+    }
+    
+    private func updateNavigationTitle() {
+        guard let currentVC = coordinator.navigationController.topViewController else { return }
+        currentVC.title = "Countries"
     }
 }
 

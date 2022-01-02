@@ -11,6 +11,7 @@ class CitiesViewController: UIViewController {
 
     //MARK: -Outlets
     @IBOutlet private weak var citiesTableView : UITableView!
+    @IBOutlet private weak var loadingIndicator: UIActivityIndicatorView!
     
     private let viewModel : CitiesViewModel
     
@@ -60,6 +61,15 @@ extension CitiesViewController: ScreenStateProtocol {
     
     func errorState() {
         
+    }
+    
+    func isLoadingStateAppearing(_ appear: Bool) {
+        DispatchQueue.main.async {
+            self.loadingIndicator.isHidden = !appear
+            self.citiesTableView.isHidden  = appear
+            
+            self.loadingIndicator.startAnimating()
+        }
     }
 }
 

@@ -11,13 +11,12 @@ import ProcedureKit
 
 class NetworkService {
     static let shared = NetworkService()
-    
-    var authToken : String?
+    var authToken     : String?
     
     private init() { }
     
     func getCountries(_ compilation: @escaping ([Country]?) -> Void) {
-        let queue = ProcedureQueue()
+        let queue          = ProcedureQueue()
         let countriesGroup = CountriesGroupProcedure()
         
         countriesGroup.addDidFinishBlockObserver { group, error in
@@ -32,7 +31,7 @@ class NetworkService {
     }
     
     func getCities(_ country: Country, _ compilation: @escaping ([State]) -> Void) {
-        let queue = ProcedureQueue()
+        let queue       = ProcedureQueue()
         let citiesGroup = CitiesProcedureGroup(country)
         
         citiesGroup.addDidFinishBlockObserver { group, error in
@@ -42,5 +41,15 @@ class NetworkService {
         }
         
         queue.addOperation(citiesGroup)
+    }
+    
+    func getHeaders() -> HTTPHeaders? {
+        guard let token = self.authToken else { return nil }
+        let headers : HTTPHeaders = [
+            "Accept": "application/json",
+            "Authorization": token
+        ]
+        
+        return headers
     }
 }

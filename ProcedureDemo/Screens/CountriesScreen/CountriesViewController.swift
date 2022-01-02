@@ -10,7 +10,8 @@ import UIKit
 class CountriesViewController: UIViewController {
     
     //MARK: -Outlets
-    @IBOutlet weak var countriesTableView: UITableView!
+    @IBOutlet private weak var countriesTableView : UITableView!
+    @IBOutlet private weak var loadingIndicator   : UIActivityIndicatorView!
     
     private let viewModel : CountryViewModel
     
@@ -44,6 +45,7 @@ class CountriesViewController: UIViewController {
     }
 }
 
+
 //MARK: -Screen protocol
 extension CountriesViewController: ScreenStateProtocol {
     func sourceState() {
@@ -54,6 +56,15 @@ extension CountriesViewController: ScreenStateProtocol {
     
     func errorState() {
         self.appearAlert("Error connection")
+    }
+    
+    func isLoadingStateAppearing(_ appear: Bool) {
+        DispatchQueue.main.async {
+            self.loadingIndicator.isHidden   = !appear
+            self.countriesTableView.isHidden = appear
+            
+            self.loadingIndicator.startAnimating()
+        }
     }
 }
 

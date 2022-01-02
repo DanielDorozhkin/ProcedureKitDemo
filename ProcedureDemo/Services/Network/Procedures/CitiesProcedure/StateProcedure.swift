@@ -44,8 +44,7 @@ class StateProcedure: Procedure, OutputProcedure {
             
             do {
                 let statesModel = try JSONDecoder().decode([StateModelResponse].self, from: data)
-                let states = self.getStatesObjects(statesModel)
-                
+                let states      = self.getStatesObjects(statesModel)
                 compilation(states)
             } catch {
                 compilation(nil)
@@ -56,7 +55,7 @@ class StateProcedure: Procedure, OutputProcedure {
     private func getHeaders() -> HTTPHeaders? {
         guard let token = NetworkService.shared.authToken else { return nil }
         let headers : HTTPHeaders = [
-            "Accept": "application/json",
+            "Accept" : "application/json",
             "Authorization": token
         ]
         

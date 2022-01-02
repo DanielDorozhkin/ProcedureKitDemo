@@ -22,10 +22,20 @@ class CitiesViewModel {
     }
     
     func requestCities() {
+        citiesDelegate?.isLoadingStateAppearing(true)
+        updateNavigationTitle()
+        
         network.getCities(requestedCountry) { states in
             self.citiesSource = states
             self.citiesDelegate?.sourceState()
+            
+            self.citiesDelegate?.isLoadingStateAppearing(false)
         }
+    }
+    
+    private func updateNavigationTitle() {
+        guard let currentVC = coordinator.navigationController.topViewController else { return }
+        currentVC.title = requestedCountry.name
     }
 }
 
