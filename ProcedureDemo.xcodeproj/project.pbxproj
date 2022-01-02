@@ -7,29 +7,71 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		119C7B8F2781EFF60000630F /* StateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7B8E2781EFF60000630F /* StateFactory.swift */; };
+		119C7B912781F1250000630F /* CityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7B902781F1250000630F /* CityFactory.swift */; };
+		119C7B932781FA7C0000630F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7B922781FA7C0000630F /* State.swift */; };
+		119C7B952781FAC80000630F /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7B942781FAC80000630F /* City.swift */; };
+		119C7B972781FBA40000630F /* CitiesProcedureGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7B962781FBA40000630F /* CitiesProcedureGroup.swift */; };
+		119C7B9A2781FBEF0000630F /* StateProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7B992781FBEF0000630F /* StateProcedure.swift */; };
+		119C7B9D2781FC8E0000630F /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7B9B2781FC8E0000630F /* CitiesViewController.swift */; };
+		119C7B9E2781FC8E0000630F /* CitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 119C7B9C2781FC8E0000630F /* CitiesViewController.xib */; };
+		119C7BA12781FD820000630F /* CitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7BA02781FD820000630F /* CitiesViewModel.swift */; };
+		119C7BAB278205380000630F /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7BA9278205380000630F /* CityTableViewCell.swift */; };
+		119C7BAC278205380000630F /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 119C7BAA278205380000630F /* CityTableViewCell.xib */; };
 		11AABC94277DBA070050DF79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AABC93277DBA070050DF79 /* AppDelegate.swift */; };
 		11AABC96277DBA070050DF79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AABC95277DBA070050DF79 /* SceneDelegate.swift */; };
-		11AABC98277DBA070050DF79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AABC97277DBA070050DF79 /* ViewController.swift */; };
 		11AABC9D277DBA0A0050DF79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11AABC9C277DBA0A0050DF79 /* Assets.xcassets */; };
 		11AABCA0277DBA0A0050DF79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AABC9E277DBA0A0050DF79 /* LaunchScreen.storyboard */; };
 		11AABCA9277DC43E0050DF79 /* ProcedureKit in Frameworks */ = {isa = PBXBuildFile; productRef = 11AABCA8277DC43E0050DF79 /* ProcedureKit */; };
 		11AABCAB277DC43E0050DF79 /* ProcedureKitNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 11AABCAA277DC43E0050DF79 /* ProcedureKitNetwork */; };
-		11AABCAD277DC5190050DF79 /* ProcedureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AABCAC277DC5190050DF79 /* ProcedureModel.swift */; };
 		11BD64BE27819D5400D8C9E8 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64BC27819D5400D8C9E8 /* CountriesViewController.swift */; };
 		11BD64BF27819D5400D8C9E8 /* CountriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BD64BD27819D5400D8C9E8 /* CountriesViewController.xib */; };
+		11BD64C32781A01000D8C9E8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64C22781A01000D8C9E8 /* NetworkService.swift */; };
+		11BD64C72781A04000D8C9E8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 11BD64C62781A04000D8C9E8 /* Alamofire */; };
+		11BD64C92781A7FE00D8C9E8 /* AuthProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64C82781A7FE00D8C9E8 /* AuthProcedure.swift */; };
+		11BD64CC2781AE6000D8C9E8 /* CountriesProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64CB2781AE6000D8C9E8 /* CountriesProcedure.swift */; };
+		11BD64CE2781C48600D8C9E8 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64CD2781C48600D8C9E8 /* Country.swift */; };
+		11BD64D12781C55900D8C9E8 /* CountryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64D02781C55900D8C9E8 /* CountryFactory.swift */; };
+		11BD64D52781CBAB00D8C9E8 /* Reusable in Frameworks */ = {isa = PBXBuildFile; productRef = 11BD64D42781CBAB00D8C9E8 /* Reusable */; };
+		11BD64D72781CCB500D8C9E8 /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64D62781CCB500D8C9E8 /* CountryViewModel.swift */; };
+		11BD64D92781CEDE00D8C9E8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64D82781CEDE00D8C9E8 /* Coordinator.swift */; };
+		11BD64E22781D6C300D8C9E8 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64E02781D6C300D8C9E8 /* CountryTableViewCell.swift */; };
+		11BD64E32781D6C300D8C9E8 /* CountryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BD64E12781D6C300D8C9E8 /* CountryTableViewCell.xib */; };
+		11BD64E52781DC1300D8C9E8 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64E42781DC1300D8C9E8 /* UIViewController + Alert.swift */; };
+		11BD64E82781E02E00D8C9E8 /* CitiesProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64E72781E02E00D8C9E8 /* CitiesProcedure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		119C7B8E2781EFF60000630F /* StateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateFactory.swift; sourceTree = "<group>"; };
+		119C7B902781F1250000630F /* CityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityFactory.swift; sourceTree = "<group>"; };
+		119C7B922781FA7C0000630F /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		119C7B942781FAC80000630F /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		119C7B962781FBA40000630F /* CitiesProcedureGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesProcedureGroup.swift; sourceTree = "<group>"; };
+		119C7B992781FBEF0000630F /* StateProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateProcedure.swift; sourceTree = "<group>"; };
+		119C7B9B2781FC8E0000630F /* CitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewController.swift; sourceTree = "<group>"; };
+		119C7B9C2781FC8E0000630F /* CitiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitiesViewController.xib; sourceTree = "<group>"; };
+		119C7BA02781FD820000630F /* CitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewModel.swift; sourceTree = "<group>"; };
+		119C7BA9278205380000630F /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		119C7BAA278205380000630F /* CityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
 		11AABC90277DBA070050DF79 /* ProcedureDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProcedureDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11AABC93277DBA070050DF79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11AABC95277DBA070050DF79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		11AABC97277DBA070050DF79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		11AABC9C277DBA0A0050DF79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11AABC9F277DBA0A0050DF79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11AABCA1277DBA0A0050DF79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11AABCAC277DC5190050DF79 /* ProcedureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureModel.swift; sourceTree = "<group>"; };
 		11BD64BC27819D5400D8C9E8 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
 		11BD64BD27819D5400D8C9E8 /* CountriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesViewController.xib; sourceTree = "<group>"; };
+		11BD64C22781A01000D8C9E8 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		11BD64C82781A7FE00D8C9E8 /* AuthProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProcedure.swift; sourceTree = "<group>"; };
+		11BD64CB2781AE6000D8C9E8 /* CountriesProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesProcedure.swift; sourceTree = "<group>"; };
+		11BD64CD2781C48600D8C9E8 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		11BD64D02781C55900D8C9E8 /* CountryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryFactory.swift; sourceTree = "<group>"; };
+		11BD64D62781CCB500D8C9E8 /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
+		11BD64D82781CEDE00D8C9E8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		11BD64E02781D6C300D8C9E8 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		11BD64E12781D6C300D8C9E8 /* CountryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryTableViewCell.xib; sourceTree = "<group>"; };
+		11BD64E42781DC1300D8C9E8 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
+		11BD64E72781E02E00D8C9E8 /* CitiesProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesProcedure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,14 +79,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11BD64C72781A04000D8C9E8 /* Alamofire in Frameworks */,
 				11AABCAB277DC43E0050DF79 /* ProcedureKitNetwork in Frameworks */,
 				11AABCA9277DC43E0050DF79 /* ProcedureKit in Frameworks */,
+				11BD64D52781CBAB00D8C9E8 /* Reusable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		119C7B982781FBBE0000630F /* CitiesProcedure */ = {
+			isa = PBXGroup;
+			children = (
+				119C7B962781FBA40000630F /* CitiesProcedureGroup.swift */,
+				11BD64E72781E02E00D8C9E8 /* CitiesProcedure.swift */,
+				119C7B992781FBEF0000630F /* StateProcedure.swift */,
+			);
+			path = CitiesProcedure;
+			sourceTree = "<group>";
+		};
+		119C7B9F2781FC930000630F /* CitiesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				119C7BA02781FD820000630F /* CitiesViewModel.swift */,
+				119C7B9B2781FC8E0000630F /* CitiesViewController.swift */,
+				119C7B9C2781FC8E0000630F /* CitiesViewController.xib */,
+				119C7BA6278205040000630F /* Cell */,
+			);
+			path = CitiesScreen;
+			sourceTree = "<group>";
+		};
+		119C7BA6278205040000630F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				119C7BA9278205380000630F /* CityTableViewCell.swift */,
+				119C7BAA278205380000630F /* CityTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		11AABC87277DBA070050DF79 = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +138,8 @@
 		11AABC92277DBA070050DF79 /* ProcedureDemo */ = {
 			isa = PBXGroup;
 			children = (
-				11AABC97277DBA070050DF79 /* ViewController.swift */,
-				11AABCAC277DC5190050DF79 /* ProcedureModel.swift */,
+				11BD64C42781A01400D8C9E8 /* Services */,
+				11BD64CF2781C48900D8C9E8 /* Models */,
 				11BD64C127819D7000D8C9E8 /* Screens */,
 				11BD64BB27819D2700D8C9E8 /* Utilites */,
 				11AABCA1277DBA0A0050DF79 /* Info.plist */,
@@ -94,8 +168,9 @@
 		11BD64BB27819D2700D8C9E8 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
-				11BD64BA27819D1900D8C9E8 /* Materials */,
 				11BD64B927819CE700D8C9E8 /* AppDelegates */,
+				11BD64BA27819D1900D8C9E8 /* Materials */,
+				11BD64E42781DC1300D8C9E8 /* UIViewController + Alert.swift */,
 			);
 			path = Utilites;
 			sourceTree = "<group>";
@@ -103,8 +178,10 @@
 		11BD64C027819D6200D8C9E8 /* CountriesScreen */ = {
 			isa = PBXGroup;
 			children = (
+				11BD64D62781CCB500D8C9E8 /* CountryViewModel.swift */,
 				11BD64BC27819D5400D8C9E8 /* CountriesViewController.swift */,
 				11BD64BD27819D5400D8C9E8 /* CountriesViewController.xib */,
+				11BD64DF2781D19B00D8C9E8 /* Cell */,
 			);
 			path = CountriesScreen;
 			sourceTree = "<group>";
@@ -113,8 +190,75 @@
 			isa = PBXGroup;
 			children = (
 				11BD64C027819D6200D8C9E8 /* CountriesScreen */,
+				119C7B9F2781FC930000630F /* CitiesScreen */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		11BD64C42781A01400D8C9E8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				11BD64DA2781CEE400D8C9E8 /* Coordinator */,
+				11BD64CA2781AE3300D8C9E8 /* Network */,
+				11BD64D22781C55D00D8C9E8 /* Factory */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		11BD64CA2781AE3300D8C9E8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				11BD64C22781A01000D8C9E8 /* NetworkService.swift */,
+				11BD64E62781DFDE00D8C9E8 /* Procedures */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		11BD64CF2781C48900D8C9E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				11BD64CD2781C48600D8C9E8 /* Country.swift */,
+				119C7B922781FA7C0000630F /* State.swift */,
+				119C7B942781FAC80000630F /* City.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		11BD64D22781C55D00D8C9E8 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				11BD64D02781C55900D8C9E8 /* CountryFactory.swift */,
+				119C7B8E2781EFF60000630F /* StateFactory.swift */,
+				119C7B902781F1250000630F /* CityFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		11BD64DA2781CEE400D8C9E8 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				11BD64D82781CEDE00D8C9E8 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		11BD64DF2781D19B00D8C9E8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				11BD64E02781D6C300D8C9E8 /* CountryTableViewCell.swift */,
+				11BD64E12781D6C300D8C9E8 /* CountryTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		11BD64E62781DFDE00D8C9E8 /* Procedures */ = {
+			isa = PBXGroup;
+			children = (
+				11BD64C82781A7FE00D8C9E8 /* AuthProcedure.swift */,
+				11BD64CB2781AE6000D8C9E8 /* CountriesProcedure.swift */,
+				119C7B982781FBBE0000630F /* CitiesProcedure */,
+			);
+			path = Procedures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +280,8 @@
 			packageProductDependencies = (
 				11AABCA8277DC43E0050DF79 /* ProcedureKit */,
 				11AABCAA277DC43E0050DF79 /* ProcedureKitNetwork */,
+				11BD64C62781A04000D8C9E8 /* Alamofire */,
+				11BD64D42781CBAB00D8C9E8 /* Reusable */,
 			);
 			productName = ProcedureDemo;
 			productReference = 11AABC90277DBA070050DF79 /* ProcedureDemo.app */;
@@ -167,6 +313,8 @@
 			mainGroup = 11AABC87277DBA070050DF79;
 			packageReferences = (
 				11AABCA7277DC43E0050DF79 /* XCRemoteSwiftPackageReference "ProcedureKit" */,
+				11BD64C52781A04000D8C9E8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				11BD64D32781CBAB00D8C9E8 /* XCRemoteSwiftPackageReference "Reusable" */,
 			);
 			productRefGroup = 11AABC91277DBA070050DF79 /* Products */;
 			projectDirPath = "";
@@ -182,9 +330,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11BD64E32781D6C300D8C9E8 /* CountryTableViewCell.xib in Resources */,
 				11AABCA0277DBA0A0050DF79 /* LaunchScreen.storyboard in Resources */,
 				11AABC9D277DBA0A0050DF79 /* Assets.xcassets in Resources */,
 				11BD64BF27819D5400D8C9E8 /* CountriesViewController.xib in Resources */,
+				119C7BAC278205380000630F /* CityTableViewCell.xib in Resources */,
+				119C7B9E2781FC8E0000630F /* CitiesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,11 +346,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11AABC98277DBA070050DF79 /* ViewController.swift in Sources */,
-				11AABCAD277DC5190050DF79 /* ProcedureModel.swift in Sources */,
+				119C7B972781FBA40000630F /* CitiesProcedureGroup.swift in Sources */,
+				119C7B9D2781FC8E0000630F /* CitiesViewController.swift in Sources */,
+				119C7B9A2781FBEF0000630F /* StateProcedure.swift in Sources */,
+				11BD64CE2781C48600D8C9E8 /* Country.swift in Sources */,
+				11BD64CC2781AE6000D8C9E8 /* CountriesProcedure.swift in Sources */,
+				11BD64D72781CCB500D8C9E8 /* CountryViewModel.swift in Sources */,
+				119C7B932781FA7C0000630F /* State.swift in Sources */,
+				11BD64E52781DC1300D8C9E8 /* UIViewController + Alert.swift in Sources */,
+				119C7B8F2781EFF60000630F /* StateFactory.swift in Sources */,
+				11BD64C92781A7FE00D8C9E8 /* AuthProcedure.swift in Sources */,
+				119C7BAB278205380000630F /* CityTableViewCell.swift in Sources */,
+				119C7BA12781FD820000630F /* CitiesViewModel.swift in Sources */,
+				11BD64E82781E02E00D8C9E8 /* CitiesProcedure.swift in Sources */,
+				119C7B912781F1250000630F /* CityFactory.swift in Sources */,
 				11AABC94277DBA070050DF79 /* AppDelegate.swift in Sources */,
 				11BD64BE27819D5400D8C9E8 /* CountriesViewController.swift in Sources */,
+				11BD64E22781D6C300D8C9E8 /* CountryTableViewCell.swift in Sources */,
+				11BD64D92781CEDE00D8C9E8 /* Coordinator.swift in Sources */,
+				11BD64C32781A01000D8C9E8 /* NetworkService.swift in Sources */,
 				11AABC96277DBA070050DF79 /* SceneDelegate.swift in Sources */,
+				119C7B952781FAC80000630F /* City.swift in Sources */,
+				11BD64D12781C55900D8C9E8 /* CountryFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +587,22 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		11BD64C52781A04000D8C9E8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		11BD64D32781CBAB00D8C9E8 /* XCRemoteSwiftPackageReference "Reusable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/Reusable.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -431,6 +615,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 11AABCA7277DC43E0050DF79 /* XCRemoteSwiftPackageReference "ProcedureKit" */;
 			productName = ProcedureKitNetwork;
+		};
+		11BD64C62781A04000D8C9E8 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11BD64C52781A04000D8C9E8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		11BD64D42781CBAB00D8C9E8 /* Reusable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11BD64D32781CBAB00D8C9E8 /* XCRemoteSwiftPackageReference "Reusable" */;
+			productName = Reusable;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

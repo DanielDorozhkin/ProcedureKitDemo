@@ -8,9 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CountriesViewController" customModule="ProcedureDemo" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CitiesViewController" customModule="ProcedureDemo" customModuleProvider="target">
             <connections>
-                <outlet property="countriesTableView" destination="ujl-NI-bPB" id="zbE-oH-eyG"/>
+                <outlet property="citiesTableView" destination="GNx-Kb-a37" id="x97-Y4-NOR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" canCancelContentTouches="NO" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="70" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujl-NI-bPB">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GNx-Kb-a37">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
@@ -27,12 +27,12 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ujl-NI-bPB" secondAttribute="bottom" id="0er-oH-Avg"/>
-                <constraint firstItem="ujl-NI-bPB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6Sc-GU-l6T"/>
-                <constraint firstItem="ujl-NI-bPB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Zbc-eU-4XH"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ujl-NI-bPB" secondAttribute="trailing" id="kXJ-2I-ahO"/>
+                <constraint firstItem="GNx-Kb-a37" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="A56-YR-6cP"/>
+                <constraint firstItem="GNx-Kb-a37" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="G5E-T3-uoT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GNx-Kb-a37" secondAttribute="bottom" id="fZv-An-Pau"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GNx-Kb-a37" secondAttribute="trailing" id="k1t-MV-1lX"/>
             </constraints>
-            <point key="canvasLocation" x="141" y="154"/>
+            <point key="canvasLocation" x="139" y="154"/>
         </view>
     </objects>
     <resources>
