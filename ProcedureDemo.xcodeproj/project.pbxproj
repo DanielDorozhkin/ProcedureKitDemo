@@ -39,6 +39,9 @@
 		11BD64E32781D6C300D8C9E8 /* CountryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BD64E12781D6C300D8C9E8 /* CountryTableViewCell.xib */; };
 		11BD64E52781DC1300D8C9E8 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64E42781DC1300D8C9E8 /* UIViewController + Alert.swift */; };
 		11BD64E82781E02E00D8C9E8 /* CitiesProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64E72781E02E00D8C9E8 /* CitiesProcedure.swift */; };
+		11C1904F27833E280013A8CC /* CountryArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1904E27833E280013A8CC /* CountryArray.swift */; };
+		11C1905127833F110013A8CC /* StatesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1905027833F110013A8CC /* StatesArray.swift */; };
+		11C1905327833F820013A8CC /* CitiesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1905227833F820013A8CC /* CitiesArray.swift */; };
 		11E305C027830078006B32E6 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E305BF27830078006B32E6 /* AnimationController.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +76,9 @@
 		11BD64E12781D6C300D8C9E8 /* CountryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryTableViewCell.xib; sourceTree = "<group>"; };
 		11BD64E42781DC1300D8C9E8 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
 		11BD64E72781E02E00D8C9E8 /* CitiesProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesProcedure.swift; sourceTree = "<group>"; };
+		11C1904E27833E280013A8CC /* CountryArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryArray.swift; sourceTree = "<group>"; };
+		11C1905027833F110013A8CC /* StatesArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesArray.swift; sourceTree = "<group>"; };
+		11C1905227833F820013A8CC /* CitiesArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesArray.swift; sourceTree = "<group>"; };
 		11E305BF27830078006B32E6 /* AnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -264,10 +270,21 @@
 			path = Procedures;
 			sourceTree = "<group>";
 		};
+		11C19054278341E20013A8CC /* Arrays */ = {
+			isa = PBXGroup;
+			children = (
+				11C1904E27833E280013A8CC /* CountryArray.swift */,
+				11C1905027833F110013A8CC /* StatesArray.swift */,
+				11C1905227833F820013A8CC /* CitiesArray.swift */,
+			);
+			path = Arrays;
+			sourceTree = "<group>";
+		};
 		11E305BE2782FA27006B32E6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				11BD64E42781DC1300D8C9E8 /* UIViewController + Alert.swift */,
+				11C19054278341E20013A8CC /* Arrays */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -375,12 +392,15 @@
 				11BD64E52781DC1300D8C9E8 /* UIViewController + Alert.swift in Sources */,
 				119C7B8F2781EFF60000630F /* StateFactory.swift in Sources */,
 				11BD64C92781A7FE00D8C9E8 /* AuthProcedure.swift in Sources */,
+				11C1905327833F820013A8CC /* CitiesArray.swift in Sources */,
 				119C7BAB278205380000630F /* CityTableViewCell.swift in Sources */,
+				11C1905127833F110013A8CC /* StatesArray.swift in Sources */,
 				119C7BA12781FD820000630F /* CitiesViewModel.swift in Sources */,
 				11BD64E82781E02E00D8C9E8 /* CitiesProcedure.swift in Sources */,
 				119C7B912781F1250000630F /* CityFactory.swift in Sources */,
 				11AABC94277DBA070050DF79 /* AppDelegate.swift in Sources */,
 				11BD64BE27819D5400D8C9E8 /* CountriesViewController.swift in Sources */,
+				11C1904F27833E280013A8CC /* CountryArray.swift in Sources */,
 				11BD64E22781D6C300D8C9E8 /* CountryTableViewCell.swift in Sources */,
 				11BD64D92781CEDE00D8C9E8 /* Coordinator.swift in Sources */,
 				11E305C027830078006B32E6 /* AnimationController.swift in Sources */,
@@ -456,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -511,7 +531,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

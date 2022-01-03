@@ -50,8 +50,7 @@ private final class CountriesProcedure: Procedure, InputProcedure, OutputProcedu
         guard let headers = network.getHeaders() else { return }
         let url = "https://www.universal-tutorial.com/api/countries"
         
-        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil, requestModifier: nil).response { [weak self] data in
-            guard let self = self else { return }
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil, requestModifier: nil).response { data in
             guard let data = data.data else {
                 compilation(nil)
                 return
@@ -59,7 +58,7 @@ private final class CountriesProcedure: Procedure, InputProcedure, OutputProcedu
             
             do {
                 let countryModels = try JSONDecoder().decode([CountryModelResponse].self, from: data)
-                let countries     = self.getCountriesObjects(countryModels)
+                let countries     = countryModels.parseToObjects()
                 
                 compilation(countries)
             } catch {
@@ -69,13 +68,7 @@ private final class CountriesProcedure: Procedure, InputProcedure, OutputProcedu
     }
     
     private func getCountriesObjects(_ models: [CountryModelResponse]) -> [Country] {
-        var buffer : [Country] = []
-        models.forEach {
-            let country = CountryFactory.createCountry($0)
-            buffer.append(country)
-        }
-        
-        return buffer
+        return models.map { CountryFactory.createCountry($0) }
     }
 }
 

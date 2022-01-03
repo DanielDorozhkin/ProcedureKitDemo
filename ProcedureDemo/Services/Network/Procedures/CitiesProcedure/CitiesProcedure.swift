@@ -45,8 +45,7 @@ final class CityProcedure: Procedure, InputProcedure, OutputProcedure {
         guard let headers = network.getHeaders() else { return }
         let url = "https://www.universal-tutorial.com/api/cities/\(state.name)"
         
-        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil, requestModifier: nil).response { [weak self] data in
-            guard let self = self else { return }
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil, requestModifier: nil).response { data in
             guard let data = data.data else {
                 compilation(state)
                 return
@@ -54,7 +53,7 @@ final class CityProcedure: Procedure, InputProcedure, OutputProcedure {
             
             do {
                 let cityModels = try JSONDecoder().decode([CityModelResponse].self, from: data)
-                let cities     = self.getCityObjects(cityModels)
+                let cities     = cityModels.parseToObjects()
                 
                 state.injectCities(cities)
                 compilation(state)
@@ -62,15 +61,5 @@ final class CityProcedure: Procedure, InputProcedure, OutputProcedure {
                 compilation(state)
             }
         }
-    }
-    
-    private func getCityObjects(_ models: [CityModelResponse]) -> [City] {
-        var buffer : [City] = []
-        models.forEach {
-            let city = CityFactory.createCity($0)
-            buffer.append(city)
-        }
-        
-        return buffer
     }
 }

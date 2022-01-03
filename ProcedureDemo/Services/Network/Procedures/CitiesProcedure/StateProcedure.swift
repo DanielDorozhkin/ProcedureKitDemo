@@ -38,8 +38,7 @@ final class StateProcedure: Procedure, OutputProcedure {
         guard let headers = network.getHeaders() else { return }
         let url = "https://www.universal-tutorial.com/api/states/\(requestedCountry)"
         
-        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil, requestModifier: nil).response { [weak self] data in
-            guard let self = self else { return }
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil, requestModifier: nil).response { data in
             guard let data = data.data else {
                 compilation(nil)
                 return
@@ -47,21 +46,11 @@ final class StateProcedure: Procedure, OutputProcedure {
             
             do {
                 let statesModel = try JSONDecoder().decode([StateModelResponse].self, from: data)
-                let states      = self.getStatesObjects(statesModel)
+                let states      = statesModel.parseToObjects()
                 compilation(states)
             } catch {
                 compilation(nil)
             }
         }
-    }
-    
-    private func getStatesObjects(_ models: [StateModelResponse]) -> [State] {
-        var buffer : [State] = []
-        models.forEach {
-            let state = StateFactory.createState($0)
-            buffer.append(state)
-        }
-        
-        return buffer
     }
 }
