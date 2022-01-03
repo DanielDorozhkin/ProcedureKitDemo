@@ -14,11 +14,6 @@ protocol ScreenStateProtocol: AnyObject {
     func isLoadingStateAppearing(_ appear: Bool)
 }
 
-protocol TableViewProtocol {
-    func numberOfItemsInSection(section: Int) -> Int
-    func didSelectRowAt(indexPath: IndexPath)
-}
-
 //MARK: -Source
 class CountryViewModel {
     private let network              : NetworkService
@@ -55,7 +50,7 @@ class CountryViewModel {
 }
 
 //MARK: -Table view
-extension CountryViewModel: TableViewProtocol {
+extension CountryViewModel {
     func numberOfItemsInSection(section: Int) -> Int {
         return countriesSource.count
     }

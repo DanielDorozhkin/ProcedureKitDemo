@@ -30,13 +30,15 @@ class NetworkService {
         queue.addOperation(countriesGroup)
     }
     
-    func getCities(_ country: Country, _ compilation: @escaping ([State]) -> Void) {
+    func getCities(_ country: Country, _ compilation: @escaping ([State]?) -> Void) {
         let queue       = ProcedureQueue()
         let citiesGroup = CitiesProcedureGroup(country)
         
         citiesGroup.addDidFinishBlockObserver { group, error in
             if let cities = group.output.value?.value {
                 compilation(cities)
+            } else {
+                compilation(nil)
             }
         }
         

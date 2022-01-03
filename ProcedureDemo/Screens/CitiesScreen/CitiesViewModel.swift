@@ -26,8 +26,12 @@ class CitiesViewModel {
         updateNavigationTitle()
         
         network.getCities(requestedCountry) { states in
-            self.citiesSource = states
-            self.citiesDelegate?.sourceState()
+            if let states = states {
+                self.citiesSource = states
+                self.citiesDelegate?.sourceState()
+            } else {
+                self.citiesDelegate?.errorState()
+            }
             
             self.citiesDelegate?.isLoadingStateAppearing(false)
         }
@@ -37,10 +41,14 @@ class CitiesViewModel {
         guard let currentVC = coordinator.navigationController.topViewController else { return }
         currentVC.title = requestedCountry.name
     }
+    
+    func popScreen() {
+        coordinator.pop()
+    }
 }
 
 //MARK: -Table view
-extension CitiesViewModel: TableViewProtocol {
+extension CitiesViewModel {
     func numberOfSections() -> Int {
         return citiesSource.count
     }
@@ -50,7 +58,8 @@ extension CitiesViewModel: TableViewProtocol {
         return state.cities.count
     }
     
-    func didSelectRowAt(indexPath: IndexPath) {
-        
+    func titleForSection(section: Int) -> String {
+        let state = citiesSource[section]
+        return state.name
     }
 }

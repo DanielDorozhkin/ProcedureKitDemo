@@ -32,12 +32,12 @@ class CountriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionSetup()
+        tableSetup()
         viewModel.getCountries()
     }
     
     //MARK: -Configure
-    private func collectionSetup() {
+    private func tableSetup() {
         countriesTableView.delegate   = self
         countriesTableView.dataSource = self
         
@@ -55,13 +55,15 @@ extension CountriesViewController: ScreenStateProtocol {
     }
     
     func errorState() {
-        self.appearAlert("Error connection")
+        DispatchQueue.main.async {
+            self.appearAlert("Connection troubles", action: { _ in })
+        }
     }
     
     func isLoadingStateAppearing(_ appear: Bool) {
         DispatchQueue.main.async {
             self.loadingIndicator.isHidden   = !appear
-            self.countriesTableView.isHidden = appear
+            self.countriesTableView.isHidden =  appear
             
             self.loadingIndicator.startAnimating()
         }

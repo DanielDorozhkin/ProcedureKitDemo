@@ -60,13 +60,17 @@ extension CitiesViewController: ScreenStateProtocol {
     }
     
     func errorState() {
-        
+        DispatchQueue.main.async {
+            self.appearAlert("No information found", action: { [weak self] _ in
+                self?.viewModel.popScreen()
+            })
+        }
     }
     
     func isLoadingStateAppearing(_ appear: Bool) {
         DispatchQueue.main.async {
             self.loadingIndicator.isHidden = !appear
-            self.citiesTableView.isHidden  = appear
+            self.citiesTableView.isHidden  =  appear
             
             self.loadingIndicator.startAnimating()
         }
@@ -79,6 +83,10 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
         return viewModel.numberOfSections()
     }
     
+    func tableView(_ tableView : UITableView, titleForHeaderInSection section: Int)->String? {
+        return viewModel.titleForSection(section: section)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItemsInSection(section: section)
     }
@@ -89,11 +97,6 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.configure(city)
         return cell
-    }
-    
-    func tableView(_ tableView : UITableView, titleForHeaderInSection section: Int)->String? {
-        let state = viewModel.citiesSource[section]
-        return state.name
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

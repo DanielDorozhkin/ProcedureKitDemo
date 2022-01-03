@@ -52,9 +52,9 @@ class CountriesProcedure: Procedure, InputProcedure, OutputProcedure {
             
             do {
                 let countryModels = try JSONDecoder().decode([CountryModelResponse].self, from: data)
-                let countries = self.getCountriesObjects(countryModels)
+                let countries     = self.getCountriesObjects(countryModels)
                 
-               compilation(countries)
+                compilation(countries)
             } catch {
                 compilation(nil)
             }

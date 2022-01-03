@@ -170,7 +170,7 @@
 			children = (
 				11BD64B927819CE700D8C9E8 /* AppDelegates */,
 				11BD64BA27819D1900D8C9E8 /* Materials */,
-				11BD64E42781DC1300D8C9E8 /* UIViewController + Alert.swift */,
+				11E305BE2782FA27006B32E6 /* Extensions */,
 			);
 			path = Utilites;
 			sourceTree = "<group>";
@@ -259,6 +259,14 @@
 				119C7B982781FBBE0000630F /* CitiesProcedure */,
 			);
 			path = Procedures;
+			sourceTree = "<group>";
+		};
+		11E305BE2782FA27006B32E6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11BD64E42781DC1300D8C9E8 /* UIViewController + Alert.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
