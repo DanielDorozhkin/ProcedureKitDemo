@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CountryFactory {
+final class CountryFactory {
     static func createCountry(_ model: CountryModelResponse) -> Country {
         let country = Country(name: model.name, code: model.code)
         return country

@@ -15,10 +15,11 @@ protocol ScreenStateProtocol: AnyObject {
 }
 
 //MARK: -Source
-class CountryViewModel {
+final class CountryViewModel {
     private let network              : NetworkService
     private let coordinator          : Coordinator
     private(set) var countriesSource = [Country]()
+    
     weak var countryDelegate         : ScreenStateProtocol?
     
     init(_ network: NetworkService, coordinator: Coordinator) {
@@ -28,9 +29,9 @@ class CountryViewModel {
     
     func getCountries() {
         countryDelegate?.isLoadingStateAppearing(true)
-        updateNavigationTitle()
+        coordinator.updateNavigationTitle("Countries")
         
-        network.getCountries { [weak self] countries in
+        network.requestCountries { [weak self] countries in
             guard let self = self else { return }
             if let countries = countries {
                 self.countriesSource = countries
@@ -41,11 +42,6 @@ class CountryViewModel {
             
             self.countryDelegate?.isLoadingStateAppearing(false)
         }
-    }
-    
-    private func updateNavigationTitle() {
-        guard let currentVC = coordinator.navigationController.topViewController else { return }
-        currentVC.title = "Countries"
     }
 }
 

@@ -39,6 +39,7 @@
 		11BD64E32781D6C300D8C9E8 /* CountryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BD64E12781D6C300D8C9E8 /* CountryTableViewCell.xib */; };
 		11BD64E52781DC1300D8C9E8 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64E42781DC1300D8C9E8 /* UIViewController + Alert.swift */; };
 		11BD64E82781E02E00D8C9E8 /* CitiesProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD64E72781E02E00D8C9E8 /* CitiesProcedure.swift */; };
+		11E305C027830078006B32E6 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E305BF27830078006B32E6 /* AnimationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		11BD64E12781D6C300D8C9E8 /* CountryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryTableViewCell.xib; sourceTree = "<group>"; };
 		11BD64E42781DC1300D8C9E8 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
 		11BD64E72781E02E00D8C9E8 /* CitiesProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesProcedure.swift; sourceTree = "<group>"; };
+		11E305BF27830078006B32E6 /* AnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				11BD64DA2781CEE400D8C9E8 /* Coordinator */,
 				11BD64CA2781AE3300D8C9E8 /* Network */,
 				11BD64D22781C55D00D8C9E8 /* Factory */,
+				11E305C127830087006B32E6 /* Animation */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -267,6 +270,14 @@
 				11BD64E42781DC1300D8C9E8 /* UIViewController + Alert.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		11E305C127830087006B32E6 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				11E305BF27830078006B32E6 /* AnimationController.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +383,7 @@
 				11BD64BE27819D5400D8C9E8 /* CountriesViewController.swift in Sources */,
 				11BD64E22781D6C300D8C9E8 /* CountryTableViewCell.swift in Sources */,
 				11BD64D92781CEDE00D8C9E8 /* Coordinator.swift in Sources */,
+				11E305C027830078006B32E6 /* AnimationController.swift in Sources */,
 				11BD64C32781A01000D8C9E8 /* NetworkService.swift in Sources */,
 				11AABC96277DBA070050DF79 /* SceneDelegate.swift in Sources */,
 				119C7B952781FAC80000630F /* City.swift in Sources */,
@@ -444,7 +456,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -499,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

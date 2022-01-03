@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StateFactory {
+final class StateFactory {
     static func createState(_ model: StateModelResponse) -> State {
         let state = State(model.name)
         return state

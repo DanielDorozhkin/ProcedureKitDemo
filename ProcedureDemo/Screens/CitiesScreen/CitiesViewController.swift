@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CitiesViewController: UIViewController {
+final class CitiesViewController: UIViewController {
 
     //MARK: -Outlets
     @IBOutlet private weak var citiesTableView : UITableView!

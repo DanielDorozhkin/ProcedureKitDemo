@@ -9,15 +9,15 @@ import Foundation
 import Alamofire
 import ProcedureKit
 
-class NetworkService {
-    static let shared = NetworkService()
-    var authToken     : String?
+final class NetworkService {
+    static  let shared    = NetworkService()
+    private var authToken : String?
     
     private init() { }
     
-    func getCountries(_ compilation: @escaping ([Country]?) -> Void) {
+    func requestCountries(_ compilation: @escaping ([Country]?) -> Void) {
         let queue          = ProcedureQueue()
-        let countriesGroup = CountriesGroupProcedure()
+        let countriesGroup = CountriesGroupProcedure(self)
         
         countriesGroup.addDidFinishBlockObserver { group, error in
             if let countries = group.output.value?.value {
@@ -30,9 +30,9 @@ class NetworkService {
         queue.addOperation(countriesGroup)
     }
     
-    func getCities(_ country: Country, _ compilation: @escaping ([State]?) -> Void) {
+    func requestCities(_ country: Country, _ compilation: @escaping ([State]?) -> Void) {
         let queue       = ProcedureQueue()
-        let citiesGroup = CitiesProcedureGroup(country)
+        let citiesGroup = CitiesProcedureGroup(country, network: self)
         
         citiesGroup.addDidFinishBlockObserver { group, error in
             if let cities = group.output.value?.value {
@@ -53,5 +53,9 @@ class NetworkService {
         ]
         
         return headers
+    }
+    
+    func setAuthKey(_ key: String) {
+        self.authToken = key
     }
 }

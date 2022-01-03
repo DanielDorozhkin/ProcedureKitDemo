@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CountriesViewController: UIViewController {
+final class CountriesViewController: UIViewController {
     
     //MARK: -Outlets
     @IBOutlet private weak var countriesTableView : UITableView!

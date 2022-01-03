@@ -9,10 +9,15 @@ import Foundation
 import Alamofire
 import ProcedureKit
 
-class CityProcedure: Procedure, InputProcedure, OutputProcedure {
+final class CityProcedure: Procedure, InputProcedure, OutputProcedure {
     var input  : Pending<[State]>                  = .pending
     var output : Pending<ProcedureResult<[State]>> = .pending
-    private let network                            = NetworkService.shared
+    private let network                            : NetworkService
+    
+    init(_ network: NetworkService) {
+        self.network = network
+        super.init()
+    }
     
     override func execute() {
         getAllCities { states in

@@ -9,13 +9,13 @@ import Foundation
 import Alamofire
 import ProcedureKit
 
-class CountriesGroupProcedure: GroupProcedure, InputProcedure, OutputProcedure {
+final class CountriesGroupProcedure: GroupProcedure, InputProcedure, OutputProcedure {
     var input : Pending<String>                     = .pending
     var output: Pending<ProcedureResult<[Country]>> = .pending
     
-    init() {
-        let authProcedure      = AuthProcedure()
-        let countriesProcedure = CountriesProcedure().injectResult(from: authProcedure)
+    init(_ network: NetworkService) {
+        let authProcedure      = AuthProcedure(network)
+        let countriesProcedure = CountriesProcedure(network).injectResult(from: authProcedure)
         
         super.init(operations: [authProcedure, countriesProcedure])
         
@@ -23,9 +23,16 @@ class CountriesGroupProcedure: GroupProcedure, InputProcedure, OutputProcedure {
     }
 }
 
-class CountriesProcedure: Procedure, InputProcedure, OutputProcedure {
+private final class CountriesProcedure: Procedure, InputProcedure, OutputProcedure {
     var input : Pending<String>                     = .pending
     var output: Pending<ProcedureResult<[Country]>> = .pending
+    
+    private let network : NetworkService
+    
+    init(_ network: NetworkService) {
+        self.network = network
+        super.init()
+    }
     
     override func execute() {
         getCountries { countries in
@@ -40,7 +47,7 @@ class CountriesProcedure: Procedure, InputProcedure, OutputProcedure {
     }
     
     private func getCountries(_ compilation: @escaping ([Country]?) -> Void) {
-        guard let headers = getHeaders() else { return }
+        guard let headers = network.getHeaders() else { return }
         let url = "https://www.universal-tutorial.com/api/countries"
         
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil, requestModifier: nil).response { [weak self] data in
@@ -59,16 +66,6 @@ class CountriesProcedure: Procedure, InputProcedure, OutputProcedure {
                 compilation(nil)
             }
         }
-    }
-    
-    private func getHeaders() -> HTTPHeaders? {
-        guard let token = NetworkService.shared.authToken else { return nil }
-        let headers : HTTPHeaders = [
-            "Accept": "application/json",
-            "Authorization": token
-        ]
-        
-        return headers
     }
     
     private func getCountriesObjects(_ models: [CountryModelResponse]) -> [Country] {

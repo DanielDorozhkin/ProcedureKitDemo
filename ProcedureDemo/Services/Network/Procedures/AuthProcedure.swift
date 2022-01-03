@@ -9,13 +9,19 @@ import Foundation
 import ProcedureKit
 import Alamofire
 
-class AuthProcedure: Procedure, OutputProcedure {
+final class AuthProcedure: Procedure, OutputProcedure {
     var output : Pending<ProcedureResult<String>> = .pending
+    private let network : NetworkService
+    
+    init(_ network: NetworkService) {
+        self.network = network
+        super.init()
+    }
     
     override func execute() {
         getToken { token in
             if let token = token {
-                NetworkService.shared.authToken = token
+                NetworkService.shared.setAuthKey(token)
                 self.output = .ready(.success(token))
             } else {
                 self.cancel()
@@ -61,7 +67,7 @@ class AuthProcedure: Procedure, OutputProcedure {
     }
 }
 
-struct AuthResponse : Decodable {
+private struct AuthResponse : Decodable {
     let key : String
     
     enum CodingKeys: String, CodingKey {

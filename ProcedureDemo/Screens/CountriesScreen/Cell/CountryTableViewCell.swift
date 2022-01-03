@@ -8,7 +8,7 @@
 import UIKit
 import Reusable
 
-class CountryTableViewCell: UITableViewCell, NibReusable {
+final class CountryTableViewCell: UITableViewCell, NibReusable {
     
     //MARK: -Outlets
     @IBOutlet private weak var nameLabel: UILabel!

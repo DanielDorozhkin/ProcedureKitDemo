@@ -7,7 +7,7 @@
 
 import Foundation
 
-class City {
+final class City {
     let name: String
     
     init(_ name: String) {

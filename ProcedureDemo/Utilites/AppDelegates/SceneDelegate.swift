@@ -17,8 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         let navigationController = UINavigationController()
+        let network = NetworkService.shared
         
-        let coordinator = Coordinator(navigationController)
+        let coordinator = Coordinator(navigationController, network: network)
         coordinator.start()
         
         window.rootViewController = navigationController

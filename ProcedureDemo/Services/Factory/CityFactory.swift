@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CityFactory {
+final class CityFactory {
     static func createCity(_ model: CityModelResponse) -> City {
         let city = City(model.name)
         return city

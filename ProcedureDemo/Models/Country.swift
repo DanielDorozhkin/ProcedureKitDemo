@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Country {
+final class Country {
     let name: String
     let code: String
     

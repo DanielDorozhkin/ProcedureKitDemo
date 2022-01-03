@@ -8,12 +8,12 @@
 import Foundation
 import ProcedureKit
 
-class CitiesProcedureGroup: GroupProcedure, OutputProcedure {
+final class CitiesProcedureGroup: GroupProcedure, OutputProcedure {
     var output: Pending<ProcedureResult<[State]>> = .pending
     
-    init(_ country: Country) {
-        let stateProcedure  = StateProcedure(country.name)
-        let citiesProcedure = CityProcedure().injectResult(from: stateProcedure)
+    init(_ country: Country, network: NetworkService) {
+        let stateProcedure  = StateProcedure(country.name, network: network)
+        let citiesProcedure = CityProcedure(network).injectResult(from: stateProcedure)
         
         super.init(operations: [stateProcedure, citiesProcedure])
         

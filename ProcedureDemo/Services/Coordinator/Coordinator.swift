@@ -8,12 +8,17 @@
 import Foundation
 import UIKit
 
-class Coordinator {
-    let navigationController : UINavigationController
-    private let network      = NetworkService.shared
+//MARK: -Source
+final class Coordinator: NSObject {
+    private let navigationController : UINavigationController
+    private let network              : NetworkService
     
-    init(_ navigationController: UINavigationController) {
+    init(_ navigationController: UINavigationController, network: NetworkService) {
         self.navigationController = navigationController
+        self.network = network
+        super.init()
+        
+        navigationController.delegate = self
     }
     
     func start() {
@@ -21,8 +26,7 @@ class Coordinator {
         let countryVC        = CountriesViewController(countryViewModel)
         countryViewModel.countryDelegate = countryVC
         
-        applyTransitionAnimation()
-        navigationController.pushViewController(countryVC, animated: false)
+        navigationController.pushViewController(countryVC, animated: true)
     }
     
     func pushCitiesScreen(_ country: Country) {
@@ -30,19 +34,28 @@ class Coordinator {
         let citiesVC        = CitiesViewController(citiesViewModel)
         citiesViewModel.citiesDelegate = citiesVC
         
-        applyTransitionAnimation()
-        navigationController.pushViewController(citiesVC, animated: false)
+        navigationController.pushViewController(citiesVC, animated: true)
     }
     
     func pop() {
-        navigationController.popViewController(animated: false)
+        navigationController.popViewController(animated: true)
     }
     
-    private func applyTransitionAnimation() {
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.fade
-        navigationController.view.layer.add(transition, forKey: nil)
+    func updateNavigationTitle(_ title: String) {
+        guard let currentVC = navigationController.topViewController else { return }
+        currentVC.title = title
+    }
+}
+
+//MARK: -Animation
+extension Coordinator: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController,
+                              animationControllerFor operation: UINavigationController.Operation,
+                              from fromVC: UIViewController,
+                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animation = FadeAnimation()
+        animation.setTransitionType(isPush: operation == .push)
+        
+        return animation
     }
 }

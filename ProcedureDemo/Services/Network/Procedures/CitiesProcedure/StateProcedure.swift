@@ -9,13 +9,16 @@ import Foundation
 import Alamofire
 import ProcedureKit
 
-class StateProcedure: Procedure, OutputProcedure {
+final class StateProcedure: Procedure, OutputProcedure {
     var output: Pending<ProcedureResult<[State]>> = .pending
     
-    let requestedCountry: String
+    private let requestedCountry : String
+    private let network          : NetworkService
     
-    init(_ country: String) {
+    init(_ country: String, network: NetworkService) {
         self.requestedCountry = country
+        self.network          = network
+        
         super.init()
     }
     
@@ -32,7 +35,7 @@ class StateProcedure: Procedure, OutputProcedure {
     }
     
     private func getStates(_ compilation: @escaping ([State]?) -> Void) {
-        guard let headers = getHeaders() else { return }
+        guard let headers = network.getHeaders() else { return }
         let url = "https://www.universal-tutorial.com/api/states/\(requestedCountry)"
         
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil, requestModifier: nil).response { [weak self] data in
@@ -50,16 +53,6 @@ class StateProcedure: Procedure, OutputProcedure {
                 compilation(nil)
             }
         }
-    }
-    
-    private func getHeaders() -> HTTPHeaders? {
-        guard let token = NetworkService.shared.authToken else { return nil }
-        let headers : HTTPHeaders = [
-            "Accept" : "application/json",
-            "Authorization": token
-        ]
-        
-        return headers
     }
     
     private func getStatesObjects(_ models: [StateModelResponse]) -> [State] {

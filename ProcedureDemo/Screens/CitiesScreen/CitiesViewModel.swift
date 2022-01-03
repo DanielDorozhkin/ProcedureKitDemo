@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: -Source
-class CitiesViewModel {
+final class CitiesViewModel {
     private let requestedCountry  : Country
     private let network           : NetworkService
     private let coordinator       : Coordinator
@@ -22,10 +22,10 @@ class CitiesViewModel {
     }
     
     func requestCities() {
+        coordinator.updateNavigationTitle(requestedCountry.name)
         citiesDelegate?.isLoadingStateAppearing(true)
-        updateNavigationTitle()
         
-        network.getCities(requestedCountry) { states in
+        network.requestCities(requestedCountry) { states in
             if let states = states {
                 self.citiesSource = states
                 self.citiesDelegate?.sourceState()
@@ -35,11 +35,6 @@ class CitiesViewModel {
             
             self.citiesDelegate?.isLoadingStateAppearing(false)
         }
-    }
-    
-    private func updateNavigationTitle() {
-        guard let currentVC = coordinator.navigationController.topViewController else { return }
-        currentVC.title = requestedCountry.name
     }
     
     func popScreen() {
