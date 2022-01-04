@@ -22,14 +22,18 @@ final class Coordinator: NSObject {
     }
     
     func start() {
+        routeToCountryListScreen()
+    }
+    
+    private func routeToCountryListScreen() {
         let countryViewModel = CountryViewModel(network, coordinator: self)
         let countryVC        = CountriesViewController(countryViewModel)
+
         countryViewModel.countryDelegate = countryVC
-        
         navigationController.pushViewController(countryVC, animated: true)
     }
     
-    func pushCitiesScreen(_ country: Country) {
+    func routeToCityListScreen(_ country: Country) {
         let citiesViewModel = CitiesViewModel(country: country, network: network, coordinator: self)
         let citiesVC        = CitiesViewController(citiesViewModel)
         citiesViewModel.citiesDelegate = citiesVC
@@ -53,7 +57,7 @@ extension Coordinator: UINavigationControllerDelegate {
                               animationControllerFor operation: UINavigationController.Operation,
                               from fromVC: UIViewController,
                               to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let animation = FadeAnimation()
+        let animation = FadeAnimator()
         animation.setTransitionType(isPush: operation == .push)
         
         return animation

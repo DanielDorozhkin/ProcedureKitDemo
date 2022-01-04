@@ -35,14 +35,13 @@ private final class CountriesProcedure: Procedure, InputProcedure, OutputProcedu
     }
     
     override func execute() {
-        getCountries { countries in
+        getCountries { [weak self] countries in
+            guard let self = self else { return }
             if let countries = countries {
-                self.output = .ready(.success(countries))
+                self.finish(withResult: .success(countries))
             } else {
-                self.cancel()
+                self.finish(with: ConnectionError.connectionError)
             }
-            
-            self.finish()
         }
     }
     
@@ -71,4 +70,3 @@ private final class CountriesProcedure: Procedure, InputProcedure, OutputProcedu
         return models.map { CountryFactory.createCountry($0) }
     }
 }
-

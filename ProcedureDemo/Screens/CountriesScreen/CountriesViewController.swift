@@ -16,13 +16,9 @@ final class CountriesViewController: UIViewController {
     private let viewModel : CountryViewModel
     
     //MARK: -Init
-    init(_ viewModel: CountryViewModel) {
+    required init(_ viewModel: CountryViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    convenience init() {
-        fatalError()
     }
     
     required init?(coder: NSCoder) {
@@ -33,7 +29,7 @@ final class CountriesViewController: UIViewController {
         super.viewDidLoad()
 
         tableSetup()
-        viewModel.getCountries()
+        viewModel.viewDidLoad()
     }
     
     //MARK: -Configure
@@ -45,22 +41,36 @@ final class CountriesViewController: UIViewController {
     }
 }
 
-
 //MARK: -Screen protocol
 extension CountriesViewController: ScreenStateProtocol {
-    func sourceState() {
+    func updateScreenState(to: ScreenState) {
+        switch to {
+        case .loading:
+            isLoadingStateAppearing(true)
+            
+        case .loaded:
+            isLoadingStateAppearing(false)
+            sourceState()
+            
+        case .error:
+            isLoadingStateAppearing(false)
+            errorState()
+        }
+    }
+    
+    private func sourceState() {
         DispatchQueue.main.async {
             self.countriesTableView.reloadData()
         }
     }
     
-    func errorState() {
+    private func errorState() {
         DispatchQueue.main.async {
             self.appearAlert("Connection troubles", action: { _ in })
         }
     }
     
-    func isLoadingStateAppearing(_ appear: Bool) {
+    private func isLoadingStateAppearing(_ appear: Bool) {
         DispatchQueue.main.async {
             self.loadingIndicator.isHidden   = !appear
             self.countriesTableView.isHidden =  appear
@@ -77,8 +87,10 @@ extension CountriesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let country = viewModel.getCellCountryObject(for: indexPath) else {
+            return UITableViewCell()
+        }
         let cell : CountryTableViewCell = countriesTableView.dequeueReusableCell(for: indexPath)
-        let country = viewModel.countriesSource[indexPath.row]
         
         cell.configure(country)
         return cell

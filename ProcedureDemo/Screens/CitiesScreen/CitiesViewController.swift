@@ -16,13 +16,9 @@ final class CitiesViewController: UIViewController {
     private let viewModel : CitiesViewModel
     
     //MARK: -Init
-    init(_ viewModel: CitiesViewModel) {
+    required init(_ viewModel: CitiesViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    convenience init() {
-        fatalError()
     }
     
     required init?(coder: NSCoder) {
@@ -39,7 +35,7 @@ final class CitiesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.requestCities()
+        viewModel.viewWillAppear()
     }
     
     //MARK: -Configure
@@ -53,13 +49,29 @@ final class CitiesViewController: UIViewController {
 
 //MARK: -Screen state protocol
 extension CitiesViewController: ScreenStateProtocol {
-    func sourceState() {
+    func updateScreenState(to: ScreenState) {
+        switch to {
+        case .loading:
+            isLoadingStateAppearing(true)
+            
+        case .loaded:
+            isLoadingStateAppearing(false)
+            sourceState()
+            
+        case .error:
+            isLoadingStateAppearing(false)
+            errorState()
+            
+        }
+    }
+    
+    private func sourceState() {
         DispatchQueue.main.async {
             self.citiesTableView.reloadData()
         }
     }
     
-    func errorState() {
+    private func errorState() {
         DispatchQueue.main.async {
             self.appearAlert("No information found", action: { [weak self] _ in
                 self?.viewModel.popScreen()
@@ -67,7 +79,7 @@ extension CitiesViewController: ScreenStateProtocol {
         }
     }
     
-    func isLoadingStateAppearing(_ appear: Bool) {
+    private func isLoadingStateAppearing(_ appear: Bool) {
         DispatchQueue.main.async {
             self.loadingIndicator.isHidden = !appear
             self.citiesTableView.isHidden  =  appear
@@ -92,8 +104,10 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let city = viewModel.getCityObjectForCell(for: indexPath) else {
+            return UITableViewCell()
+        }
         let cell : CityTableViewCell = citiesTableView.dequeueReusableCell(for: indexPath)
-        let city = viewModel.citiesSource[indexPath.section].cities[indexPath.row]
         
         cell.configure(city)
         return cell

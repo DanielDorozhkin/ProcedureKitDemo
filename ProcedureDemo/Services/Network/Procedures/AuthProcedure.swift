@@ -19,15 +19,14 @@ final class AuthProcedure: Procedure, OutputProcedure {
     }
     
     override func execute() {
-        getToken { token in
+        getToken { [weak self] token in
+            guard let self = self else { return }
             if let token = token {
-                NetworkService.shared.setAuthKey(token)
-                self.output = .ready(.success(token))
+                self.network.setAuthKey(token)
+                self.finish(withResult: .success(token))
             } else {
-                self.cancel()
+                self.finish(with: ConnectionError.connectionError)
             }
-            
-            self.finish()
         }
     }
     

@@ -20,9 +20,8 @@ final class CityProcedure: Procedure, InputProcedure, OutputProcedure {
     }
     
     override func execute() {
-        getAllCities { states in
-            self.output = .ready(.success(states))
-            self.finish()
+        getAllCities { [weak self] states in
+            self?.finish(withResult: .success(states))
         }
     }
     

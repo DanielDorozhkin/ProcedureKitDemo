@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11097D1027847C43008FB8A0 /* ArrayIndexSafer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11097D0F27847C43008FB8A0 /* ArrayIndexSafer.swift */; };
 		119C7B8F2781EFF60000630F /* StateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7B8E2781EFF60000630F /* StateFactory.swift */; };
 		119C7B912781F1250000630F /* CityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7B902781F1250000630F /* CityFactory.swift */; };
 		119C7B932781FA7C0000630F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C7B922781FA7C0000630F /* State.swift */; };
@@ -42,10 +43,11 @@
 		11C1904F27833E280013A8CC /* CountryArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1904E27833E280013A8CC /* CountryArray.swift */; };
 		11C1905127833F110013A8CC /* StatesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1905027833F110013A8CC /* StatesArray.swift */; };
 		11C1905327833F820013A8CC /* CitiesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1905227833F820013A8CC /* CitiesArray.swift */; };
-		11E305C027830078006B32E6 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E305BF27830078006B32E6 /* AnimationController.swift */; };
+		11E305C027830078006B32E6 /* FadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E305BF27830078006B32E6 /* FadeAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11097D0F27847C43008FB8A0 /* ArrayIndexSafer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayIndexSafer.swift; sourceTree = "<group>"; };
 		119C7B8E2781EFF60000630F /* StateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateFactory.swift; sourceTree = "<group>"; };
 		119C7B902781F1250000630F /* CityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityFactory.swift; sourceTree = "<group>"; };
 		119C7B922781FA7C0000630F /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
@@ -79,7 +81,7 @@
 		11C1904E27833E280013A8CC /* CountryArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryArray.swift; sourceTree = "<group>"; };
 		11C1905027833F110013A8CC /* StatesArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesArray.swift; sourceTree = "<group>"; };
 		11C1905227833F820013A8CC /* CitiesArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesArray.swift; sourceTree = "<group>"; };
-		11E305BF27830078006B32E6 /* AnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
+		11E305BF27830078006B32E6 /* FadeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +211,7 @@
 				11BD64DA2781CEE400D8C9E8 /* Coordinator */,
 				11BD64CA2781AE3300D8C9E8 /* Network */,
 				11BD64D22781C55D00D8C9E8 /* Factory */,
-				11E305C127830087006B32E6 /* Animation */,
+				11E305C127830087006B32E6 /* Animator */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -273,6 +275,7 @@
 		11C19054278341E20013A8CC /* Arrays */ = {
 			isa = PBXGroup;
 			children = (
+				11097D0F27847C43008FB8A0 /* ArrayIndexSafer.swift */,
 				11C1904E27833E280013A8CC /* CountryArray.swift */,
 				11C1905027833F110013A8CC /* StatesArray.swift */,
 				11C1905227833F820013A8CC /* CitiesArray.swift */,
@@ -289,12 +292,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		11E305C127830087006B32E6 /* Animation */ = {
+		11E305C127830087006B32E6 /* Animator */ = {
 			isa = PBXGroup;
 			children = (
-				11E305BF27830078006B32E6 /* AnimationController.swift */,
+				11E305BF27830078006B32E6 /* FadeAnimator.swift */,
 			);
-			path = Animation;
+			path = Animator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +397,7 @@
 				11BD64C92781A7FE00D8C9E8 /* AuthProcedure.swift in Sources */,
 				11C1905327833F820013A8CC /* CitiesArray.swift in Sources */,
 				119C7BAB278205380000630F /* CityTableViewCell.swift in Sources */,
+				11097D1027847C43008FB8A0 /* ArrayIndexSafer.swift in Sources */,
 				11C1905127833F110013A8CC /* StatesArray.swift in Sources */,
 				119C7BA12781FD820000630F /* CitiesViewModel.swift in Sources */,
 				11BD64E82781E02E00D8C9E8 /* CitiesProcedure.swift in Sources */,
@@ -403,7 +407,7 @@
 				11C1904F27833E280013A8CC /* CountryArray.swift in Sources */,
 				11BD64E22781D6C300D8C9E8 /* CountryTableViewCell.swift in Sources */,
 				11BD64D92781CEDE00D8C9E8 /* Coordinator.swift in Sources */,
-				11E305C027830078006B32E6 /* AnimationController.swift in Sources */,
+				11E305C027830078006B32E6 /* FadeAnimator.swift in Sources */,
 				11BD64C32781A01000D8C9E8 /* NetworkService.swift in Sources */,
 				11AABC96277DBA070050DF79 /* SceneDelegate.swift in Sources */,
 				119C7B952781FAC80000630F /* City.swift in Sources */,

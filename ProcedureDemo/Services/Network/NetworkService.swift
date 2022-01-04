@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import ProcedureKit
+import CoreText
 
 final class NetworkService {
     static  let shared    = NetworkService()
@@ -58,4 +59,8 @@ final class NetworkService {
     func setAuthKey(_ key: String) {
         self.authToken = key
     }
+}
+
+enum ConnectionError: Error {
+    case connectionError
 }

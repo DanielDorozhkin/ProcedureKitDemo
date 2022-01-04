@@ -23,14 +23,13 @@ final class StateProcedure: Procedure, OutputProcedure {
     }
     
     override func execute() {
-        getStates { states in
+        getStates { [weak self] states in
+            guard let self = self else { return }
             if let states = states {
-                self.output = .ready(.success(states))
+                self.finish(withResult: .success(states))
             } else {
-                self.cancel()
+                self.finish(with: ConnectionError.connectionError)
             }
-            
-            self.finish()
         }
     }
     

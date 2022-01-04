@@ -9,16 +9,20 @@ import Foundation
 
 //MARK: -Protocols
 protocol ScreenStateProtocol: AnyObject {
-    func sourceState()
-    func errorState()
-    func isLoadingStateAppearing(_ appear: Bool)
+    func updateScreenState(to: ScreenState)
+}
+
+enum ScreenState {
+    case loading
+    case loaded
+    case error
 }
 
 //MARK: -Source
 final class CountryViewModel {
     private let network              : NetworkService
     private let coordinator          : Coordinator
-    private(set) var countriesSource = [Country]()
+    private var countriesSource = [Country]()
     
     weak var countryDelegate         : ScreenStateProtocol?
     
@@ -27,20 +31,22 @@ final class CountryViewModel {
         self.coordinator = coordinator
     }
     
-    func getCountries() {
-        countryDelegate?.isLoadingStateAppearing(true)
+    func viewDidLoad() {
+        getCountries()
+    }
+    
+    private func getCountries() {
+        countryDelegate?.updateScreenState(to: .loading)
         coordinator.updateNavigationTitle("Countries")
         
         network.requestCountries { [weak self] countries in
             guard let self = self else { return }
             if let countries = countries {
                 self.countriesSource = countries
-                self.countryDelegate?.sourceState()
+                self.countryDelegate?.updateScreenState(to: .loaded)
             } else {
-                self.countryDelegate?.errorState()
+                self.countryDelegate?.updateScreenState(to: .error)
             }
-            
-            self.countryDelegate?.isLoadingStateAppearing(false)
         }
     }
 }
@@ -52,7 +58,14 @@ extension CountryViewModel {
     }
     
     func didSelectRowAt(indexPath: IndexPath) {
+        guard countriesSource.indices.contains(indexPath.row) else { return }
+        
         let country = countriesSource[indexPath.row]
-        coordinator.pushCitiesScreen(country)
+        coordinator.routeToCityListScreen(country)
+    }
+    
+    func getCellCountryObject(for indexPath: IndexPath) -> Country? {
+        let country = countriesSource.getItemFor(index: indexPath.row) as? Country
+        return country
     }
 }

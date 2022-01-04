@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class FadeAnimation: NSObject, UIViewControllerAnimatedTransitioning {
+final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     private var isPush : Bool = true
     
@@ -31,11 +31,11 @@ final class FadeAnimation: NSObject, UIViewControllerAnimatedTransitioning {
             
             toVc.view.alpha = 0.0
             
+            let animations = { self.applyAnimation(fromVc: fromVc, toVc: toVc) }
+            
             UIView.animate(withDuration: self.transitionDuration(using: transitionContext),
-            animations: {
-                self.applyAnimation(fromVc: fromVc, toVc: toVc)
-            },
-            completion: { finished in
+                           animations: animations,
+                           completion: { finished in
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             })
         }
@@ -43,7 +43,8 @@ final class FadeAnimation: NSObject, UIViewControllerAnimatedTransitioning {
     
     private func applyAnimation(fromVc: UIViewController, toVc: UIViewController) {
         if isPush {
-            fromVc.view.frame = CGRect(x: fromVc.view.frame.minX, y: fromVc.view.frame.minY - 500, width: fromVc.view.frame.width, height: fromVc.view.frame.height)
+            fromVc.view.transform = CGAffineTransform(translationX: 0, y: -500)
+//            fromVc.view.frame = CGRect(x: fromVc.view.frame.minX, y: fromVc.view.frame.minY - 500, width: fromVc.view.frame.width, height: fromVc.view.frame.height)
         } else {
             fromVc.view.frame = CGRect(x: fromVc.view.frame.minX, y: fromVc.view.frame.minY + 500, width: fromVc.view.frame.width, height: fromVc.view.frame.height)
         }

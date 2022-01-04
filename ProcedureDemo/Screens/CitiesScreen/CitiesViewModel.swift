@@ -12,7 +12,8 @@ final class CitiesViewModel {
     private let requestedCountry  : Country
     private let network           : NetworkService
     private let coordinator       : Coordinator
-    private(set) var citiesSource = [State]()
+    private var citiesSource = [State]()
+    
     weak var citiesDelegate       : ScreenStateProtocol?
     
     init(country: Country, network: NetworkService, coordinator: Coordinator) {
@@ -21,19 +22,21 @@ final class CitiesViewModel {
         self.coordinator      = coordinator
     }
     
-    func requestCities() {
+    func viewWillAppear() {
+        requestCities()
+    }
+    
+    private func requestCities() {
         coordinator.updateNavigationTitle(requestedCountry.name)
-        citiesDelegate?.isLoadingStateAppearing(true)
+        citiesDelegate?.updateScreenState(to: .loading)
         
         network.requestCities(requestedCountry) { states in
             if let states = states {
                 self.citiesSource = states
-                self.citiesDelegate?.sourceState()
+                self.citiesDelegate?.updateScreenState(to: .loaded)
             } else {
-                self.citiesDelegate?.errorState()
+                self.citiesDelegate?.updateScreenState(to: .error)
             }
-            
-            self.citiesDelegate?.isLoadingStateAppearing(false)
         }
     }
     
@@ -56,5 +59,12 @@ extension CitiesViewModel {
     func titleForSection(section: Int) -> String {
         let state = citiesSource[section]
         return state.name
+    }
+    
+    func getCityObjectForCell(for indexPath: IndexPath) -> City? {
+        let state = citiesSource.getItemFor(index: indexPath.section) as? State
+        let city = state?.cities.getItemFor(index: indexPath.row) as? City
+        
+        return city
     }
 }

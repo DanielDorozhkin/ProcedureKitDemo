@@ -8,7 +8,7 @@
 import Foundation
 
 final class State: Equatable {
-    let name                : String
+    let name : String
     private(set) var cities = [City]()
     
     init(_ name: String) {
